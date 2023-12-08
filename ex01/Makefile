@@ -1,8 +1,8 @@
-NAME = convert
+NAME = serializer
 
-SRC = Convert.cpp main.cpp
+SRC = Data.cpp Serializer.cpp main.cpp
 
-HEADER = Convert.hpp
+HEADER = Data.hpp Serializer.hpp
 
 OBJ = $(SRC:%.cpp=%.zizi)
 

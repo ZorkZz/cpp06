@@ -37,8 +37,11 @@ void	ScalarConverter::convert()
 	std::stringstream	char_str;
 	std::stringstream	result;
 
-	if (_str_base.length() == 1)
+	if (_str_base.size() == 1 && !std::isdigit(_str_base[0]))
+	{
 		_number_double = static_cast<double>(_str_base[0]);
+		double_str << "double: " << _number_double << "\n";
+	}
 	else
 	{
 		try
