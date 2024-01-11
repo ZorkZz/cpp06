@@ -1,4 +1,4 @@
-NAME = base
+NAME = Base
 
 SRC = main.cpp Base.cpp Identify.cpp
 

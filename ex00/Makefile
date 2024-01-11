@@ -1,4 +1,4 @@
-NAME = convert
+NAME = Convert
 
 SRC = Convert.cpp main.cpp
 

@@ -1,4 +1,4 @@
-NAME = serializer
+NAME = Serializer
 
 SRC = Data.cpp Serializer.cpp main.cpp
 

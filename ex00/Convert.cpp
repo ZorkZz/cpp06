@@ -40,22 +40,22 @@ void	ScalarConverter::convert()
 	if (_str_base.size() == 1 && !std::isdigit(_str_base[0]))
 	{
 		_number_double = static_cast<double>(_str_base[0]);
-		double_str << "double: " << _number_double << "\n";
+		double_str << "double: " << _number_double;
 	}
 	else
 	{
 		try
 		{
 			_number_double = std::strtod(_str_base.c_str(), NULL);
-			double_str << "double: " << _number_double << "\n";
+			double_str << "double: " << _number_double;
 		}
 		catch (const std::invalid_argument &e)
 		{
-			double_str << "double: invalid conversion" << "\n";
+			double_str << "double: invalid conversion";
 		}
 		catch (const std::out_of_range &e)
 		{
-			double_str << "double: invalid conversion" << "\n";
+			double_str << "double: invalid conversion";
 		}
 	}
 	float_str << "float: " << static_cast<float>(_number_double) << "f" << "\n";

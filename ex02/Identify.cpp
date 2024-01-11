@@ -26,21 +26,24 @@ void	identify(Base &base)
 {
 	try
 	{
-		dynamic_cast<A&>(base);
+		Base	&_base = dynamic_cast<A&>(base);
+		(void) _base;
 		std::cout << "r: A" << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		try
 		{
-			dynamic_cast<B&>(base);
+			Base	&_base = dynamic_cast<B&>(base);
+			(void) _base;
 			std::cout << "r: B" << std::endl;
 		}
 		catch (std::exception &e)
 		{
 			try
 			{
-				dynamic_cast<C&>(base);
+				Base	&_base = dynamic_cast<C&>(base);
+				(void) _base;
 				std::cout << "r: C" << std::endl;
 			}
 			catch(std::exception &e)
