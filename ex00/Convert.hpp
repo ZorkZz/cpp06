@@ -19,6 +19,11 @@ class ScalarConverter
 		~ScalarConverter();
 		std::string	get_print() const;
 		void		convert();
+		void		convert_double();
+		void		convert_float();
+		void		convert_int();
+		void		convert_char();
+		void		identify_type();
 
 	private:
 		std::string	_str_base;
@@ -26,6 +31,10 @@ class ScalarConverter
 		float		_number_float;
 		double		_number_double;
 		char		_number_char;
+		std::stringstream	_double_str;
+		std::stringstream	_float_str;
+		std::stringstream	_int_str;
+		std::stringstream	_char_str;
 		std::string	_print;
 };
 
