@@ -48,7 +48,7 @@ void	identify(Base &base)
 			}
 			catch(std::exception &e)
 			{
-				std::cout << "Error: " << std::endl;
+				std::cout << "Error: identification fail" << std::endl;
 			}
 		}
 	}
