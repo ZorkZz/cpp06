@@ -51,7 +51,6 @@ void	ScalarConverter::identify_type()
 	}
 	else if (i >= 1 && !is_d && !is_f)
 	{
-		std::cout << "int" << std::endl;
 		convert_int();
 		convert_double();
 		convert_float();
@@ -59,7 +58,6 @@ void	ScalarConverter::identify_type()
 	}
 	else if (i > 1 && is_f)
 	{
-		std::cout << "float" << std::endl;
 		convert_float();
 		convert_double();
 		convert_int();
@@ -67,7 +65,6 @@ void	ScalarConverter::identify_type()
 	}
 	else if (i > 1 && !is_f)
 	{
-		std::cout << "double" << std::endl;
 		convert_double();
 		convert_float();
 		convert_int();
@@ -127,53 +124,72 @@ void	ScalarConverter::convert_float()
 
 void	ScalarConverter::convert_int()
 {
+	if (_str_base == "-2147483648")
+	{
+		_number_int = -2147483648;
+		_int_str << "int: " << _number_int;
+		return ;
+	}
+	if (_str_base == "2147483647")
+	{
+		_number_int = 2147483647;
+		_int_str << "int: " << _number_int;
+		return ;
+	}
 	if (_str_base.size() == 1 && !std::isdigit(_str_base[0]))
 	{
 		_number_int = static_cast<float>(_str_base[0]);
-		_int_str << "int: " << _number_int;
 	}
 	else
 	{
 		try
 		{
 			_number_int = std::strtod(_str_base.c_str(), NULL);
-			_int_str << "int: " << _number_int;
 		}
 		catch (const std::invalid_argument &e)
 		{
 			_int_str << "int: invalid conversion";
+			return ;
 		}
 		catch (const std::out_of_range &e)
 		{
 			_int_str << "int: invalid conversion";
+			return ;
 		}
 	}
+	if (_number_int == 2147483647 || _number_int == -2147483648)
+		_int_str << "int: overflow";
+	else
+		_int_str << "char: " << _number_int;
 }
 
 void	ScalarConverter::convert_char()
 {
 	if (_str_base.size() == 1 && !std::isdigit(_str_base[0]))
 	{
-		_number_char = static_cast<float>(_str_base[0]);
-		_char_str << "char: " << _number_char;
+		_number_char = static_cast<char>(_str_base[0]);
 	}
 	else
 	{
 		try
 		{
 			_number_char = std::strtod(_str_base.c_str(), NULL);
-			_char_str << "char: " << _number_char;
 		}
 		catch (const std::invalid_argument &e)
 		{
 			_char_str << "char: invalid conversion";
+			return ;
 		}
 		catch (const std::out_of_range &e)
 		{
 			_char_str << "char: invalid conversion";
+			return ;
 		}
 	}
-	
+	if (_number_char < 32 || _number_char > 126)
+		_char_str << "char: non displayable";
+	else
+		_char_str << "char: " << _number_char;
 }
 
 void	ScalarConverter::convert()
